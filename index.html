@@ -30,6 +30,37 @@
         <p class="text-3xl font-bold text-red-500" id="rejectedCount">0</p>
       </div>
     </div>
+
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-semibold text-gray-900">Available Jobs</h2>
+      <span class="text-sm text-gray-500" id="jobsCountLabel">0 jobs</span>
+    </div>
+    <hr  class="opacity-10">
+   
+    <div class="flex gap-2 mb-6 mt-4">
+      <button class="tab-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-indigo-500 text-white" data-tab="all">
+        All <span id="tab-all-count" class="ml-1 opacity-75">0</span>
+      </button>
+      <button class="tab-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-gray-200 text-gray-600 hover:bg-gray-300"
+        data-tab="interview">
+        Interview <span id="tab-interview-count" class="ml-1 opacity-75">0</span>
+      </button>
+      <button class="tab-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-gray-200 text-gray-600 hover:bg-gray-300"
+        data-tab="rejected">
+        Rejected <span id="tab-rejected-count" class="ml-1 opacity-75">0</span>
+      </button>
+    </div>
+    <div class="grid grid-cols-1 gap-4" id="jobsGrid"></div>
+
     
+    <div id="emptyState" class="hidden flex-col items-center py-20 text-center gap-3">
+      <div class="text-5xl mb-2">📭</div>
+      <p class="text-base font-semibold text-gray-700" id="emptyStateTitle">No jobs here yet</p>
+      <p class="text-sm text-gray-400" id="emptyStateSub">Jobs you move to this tab will appear here.</p>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
