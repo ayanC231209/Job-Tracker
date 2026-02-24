@@ -1,0 +1,21 @@
+1)In JavaScript, different DOM selection methods are used to access elements from the HTML document.
+
+getElementById() is used to select a single element based on its unique id attribute. Since an id should be unique in a document, this method always returns only one element.
+
+getElementsByClassName() is used to select elements that share the same class name. It returns an HTMLCollection containing all matching elements. This collection is live, meaning it automatically updates if the DOM changes.
+
+querySelector() selects the first element that matches a specified CSS selector. It provides more flexibility because it can select elements using id, class, tag name, or complex CSS selectors.
+
+querySelectorAll() selects all elements that match a specified CSS selector and returns a NodeList. Unlike HTMLCollection, the NodeList returned by this method is static and does not automatically update when the DOM changes.
+
+2)In JavaScript, a new element can be created and inserted into the DOM using built-in DOM methods.
+
+First, an element is created using the document.createElement() method. After creating the element, content can be added using properties like textContent or innerHTML. Finally, the element is inserted into the document using methods such as appendChild(), append(), or prepend().
+
+These methods allow dynamic modification of web pages without reloading the page.
+
+3)Event bubbling is a concept in the DOM event model where an event starts from the target element and propagates upward through its parent elements in the DOM hierarchy.
+
+When an event occurs on a child element, it first executes the event handler attached to that element. Then the event moves upward to its parent element, then to the grandparent, and continues until it reaches the root of the document.
+
+This behavior allows parent elements to respond to events triggered by their child elements.
