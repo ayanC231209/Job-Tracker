@@ -26,4 +26,8 @@ Instead of attaching separate event listeners to multiple child elements, the pa
 
 Event delegation is useful because it improves performance, reduces memory usage, and works efficiently for dynamically added elements.
 
-5)
+5)The preventDefault() method is used to stop the default behavior of an element. For example, it can prevent a form from submitting or a link from navigating to another page.
+
+The stopPropagation() method is used to stop the event from propagating or bubbling up to parent elements in the DOM hierarchy.
+
+In summary, preventDefault() controls the default browser action, while stopPropagation() controls the flow of the event through the DOM.
