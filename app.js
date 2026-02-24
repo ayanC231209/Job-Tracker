@@ -42,3 +42,64 @@ function updateCounts() {
 
   jobsCountLabel.textContent = `${jobs.length} job${jobs.length !== 1 ? 's' : ''}`;
 }
+
+function getFiltered() {
+  if (activeTab === 'interview') return jobs.filter(j => j.status === 'interview');
+  if (activeTab === 'rejected') return jobs.filter(j => j.status === 'rejected');
+  return jobs;
+}
+
+function createCard(job) {
+  const isInterview = job.status === 'interview';
+  const isRejected = job.status === 'rejected';
+
+  const card = document.createElement('article');
+  card.className = 'bg-white border border-gray-200 rounded-xl p-5 flex flex-col gap-3';
+  card.dataset.id = job.id;
+
+ 
+  let badge = `<span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">Not Applied</span>`;
+  if (isInterview) badge = `<span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">Interview</span>`;
+  if (isRejected) badge = `<span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 border border-red-200">Rejected</span>`;
+
+
+  const intCls = isInterview
+    ? 'px-4 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 text-white border border-emerald-500'
+    : 'px-4 py-1.5 rounded-lg text-xs font-semibold bg-transparent text-emerald-400 border border-emerald-800 hover:bg-emerald-500 hover:text-white hover:border-emerald-500';
+
+  const rejCls = isRejected
+    ? 'px-4 py-1.5 rounded-lg text-xs font-semibold bg-red-500 text-white border border-red-500'
+    : 'px-4 py-1.5 rounded-lg text-xs font-semibold bg-transparent text-red-400 border border-red-800 hover:bg-red-500 hover:text-white hover:border-red-500';
+
+  card.innerHTML = `
+    <div class="flex items-start justify-between gap-2">
+      <div>
+        <p class="font-semibold text-gray-900 text-sm">${job.companyName}</p>
+        <p class="text-xs text-indigo-500 mt-0.5">${job.position}</p>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        ${badge}
+        <button data-action="delete" class="text-gray-600 hover:text-red-400 transition-colors" aria-label="Delete">
+          <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none">
+            <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 text-xs text-gray-400">
+      <span>${job.location}</span>
+      <span>${job.type}</span>
+      <span class="text-emerald-600 font-medium ml-auto">${job.salary}</span>
+    </div>
+
+    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">${job.description}</p>
+
+    <div class="flex items-center gap-2 pt-1">
+      <button data-action="interview" class="${intCls}">Interview</button>
+      <button data-action="rejected"  class="${rejCls}">Rejected</button>
+    </div>
+  `;
+
+  return card;
+}
