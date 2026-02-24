@@ -26,3 +26,19 @@ const emptyStateSub = document.getElementById('emptyStateSub');
 const tabAllCount = document.getElementById('tab-all-count');
 const tabInterviewCount = document.getElementById('tab-interview-count');
 const tabRejectedCount = document.getElementById('tab-rejected-count');
+
+
+function updateCounts() {
+  const interview = jobs.filter(j => j.status === 'interview').length;
+  const rejected = jobs.filter(j => j.status === 'rejected').length;
+
+  totalCountEl.textContent = jobs.length;
+  interviewCountEl.textContent = interview;
+  rejectedCountEl.textContent = rejected;
+
+  tabAllCount.textContent = jobs.length;
+  tabInterviewCount.textContent = interview;
+  tabRejectedCount.textContent = rejected;
+
+  jobsCountLabel.textContent = `${jobs.length} job${jobs.length !== 1 ? 's' : ''}`;
+}
